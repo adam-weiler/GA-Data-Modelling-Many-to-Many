@@ -1,5 +1,9 @@
 Part 1:
 
+This part focuses on designing database structures to support many-many relationships as well as 1-many relationships. Your task is to design the database structure for the classes and relationships given below.
+
+Think about what data types to use for each attribute as well as any other tables or columns you need in order to store these relationships.
+
 1. Imagine an app that allows users to keep track of what films they've seen:
 
 User:       Relationships:       Entitites:
@@ -91,7 +95,7 @@ Reader table:
 id - integer    <--- Primary key
 user_name - text
 real_name - text
-age - text
+age - integer
 favourite_genre - text
 
 Reader_Books table:
