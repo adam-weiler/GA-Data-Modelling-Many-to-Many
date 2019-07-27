@@ -27,18 +27,52 @@ Passenger   Flight               Crew
                                  Airline
 
 
+Each Flight belongs to a single Airline.
+Each Airline can have many Flights.
+Therefore there is a 1-to-many relationship between them.
+
+Each Flight has many Crew members.
+Each Crew member can go on many Flights.
+Therefore there is a many-to-many relationship between them.
+
+Each Flight has many Passengers.
+Each Passenger can go on many Flights.
+Therefore there is a many-to-many relationship between them.
+
+
 
 3. A music streaming app that allows artists to post tracks, and for listeners to subscribe to artists.
 
 User:       Relationships:       Entitites:
-Listener    Subscribe            Artist
-            Post Track
+Listener    Subscription         Artist
+            Track
+
+
+Each Track can belong to a single Artist.
+Each Artist can post many Tracks.
+Therefore there is a 1-to-many relationship between them.
+
+Each Subscription belongs to a single Listener.
+Each Listener can Subscribe to many Artists.
+Therefore there is a many-to-many relationship between them.
+
+
 
 
 4. Design the database structure to allow users to follow other users on social media (eg. Twitter).
 
 User:       Relationships:       Entitites:
-User        Follow               Following
+User        Followers
+            Following
+
+
+Each Followers list belongs to a single User.
+Each User can be Followed many Users.
+Therefore there is a 1-to-many relationship between them.
+
+Each Following list belongs to a single User.
+Each User can Follow many Users.
+Therefore there is a 1-to-many relationship between them.
 
 
 
@@ -46,5 +80,14 @@ User        Follow               Following
 5. Design a database structure to allow users to request (and accept) to follow each other on social media (eg. Facebook).
 
 User:       Relationships:       Entitites:
-User        Follow               Facebook?
-            Accept
+User        Friend Requests
+            Friends
+
+
+Each Friend Request list belongs to a single User.
+Each User can have multiple Friend Requests.
+Therefore there is a 1-to-many relationship between them.
+
+Each Friends list belongs to a single User.
+Each User can have multiple Friends.
+Therefore there is a 1-to-many relationship between them.
