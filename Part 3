@@ -5,17 +5,49 @@ In this part you will be given just the concept of an app and you will have to d
 1. A food delivery app that allows users to place orders for dishes from restaurants.
 
 User:       Relationships:       Entitites:
-Customer    Dish                 Restaurant
+Customer    Order                Restaurant
+                                 Dish
 
 
-Each Dish belongs to one Customer.
-Each Customer can order many Dishs.
+Each Order belongs to one Customer.
+Each Customer can order many Orders.
 Therefore there is a 1-to-many relationship between them.
 
-Each Dish can be prepared at a single Restaurant.
-Each Restaurant has many Dishes.
-
+Each Order can be prepared at a single Restaurant.
+Each Restaurant has many Orders.
 Therefore there is a 1-to-many relationship between them.
+
+Each Order can consist of many Dishes.
+Each Dish can be prepared in a many Orders.
+Therefore there is a many-to-many relationship between them.
+
+
+Customer table:
+id - integer    <--- Primary key
+name - text
+address - text
+
+Order table:
+id - integer    <--- Primary key
+customer_id - integer   <--- Foreign key
+restaurant_id - integer   <--- Foreign key
+
+Ordered_Dishes table:
+order_id - integer   <--- Foreign key
+dish_id - integer   <--- Foreign key
+
+Dish table:
+id - integer    <--- Primary key
+name - text
+price - integer
+availability - text
+
+Restaurant table:
+id - integer    <--- Primary key
+name - text
+address - text
+hours - text
+cuisine - text
 
 
 
@@ -27,6 +59,10 @@ Passenger   Flight               Crew
                                  Airline
 
 
+Each Flight has many Passengers.
+Each Passenger can go on many Flights.
+Therefore there is a many-to-many relationship between them.
+
 Each Flight belongs to a single Airline.
 Each Airline can have many Flights.
 Therefore there is a 1-to-many relationship between them.
@@ -35,9 +71,46 @@ Each Flight has many Crew members.
 Each Crew member can go on many Flights.
 Therefore there is a many-to-many relationship between them.
 
-Each Flight has many Passengers.
-Each Passenger can go on many Flights.
-Therefore there is a many-to-many relationship between them.
+
+
+
+Passenger table:
+id - integer    <--- Primary key
+name - text
+address - text
+gender - text
+age - integer
+allergies - text
+accessibility - text
+
+Flight_Passengers table:
+flight_id - integer   <--- Foreign key
+passenger_id - integer   <--- Foreign key
+
+Flight table:
+id - integer    <--- Primary key
+departure - text
+arrival - text
+departure_time - text or integer
+arrival_time - text or integer
+capacity - integer
+maximum_weight - integer
+airline_id - integer   <--- Foreign key
+
+Flight_Crew table:
+flight_id - integer   <--- Foreign key
+crew_id - integer   <--- Foreign key
+
+Crew table:
+id - integer    <--- Primary key
+name - text
+position - text
+address - text
+
+Airline table:
+id - integer    <--- Primary key
+name - text
+
 
 
 
@@ -48,13 +121,40 @@ Listener    Subscription         Artist
             Track
 
 
+Each Subscription belongs to a single Listener.
+Each Listener can Subscribe to many Artists.
+Therefore there is a many-to-many relationship between them.
+
 Each Track can belong to a single Artist.
 Each Artist can post many Tracks.
 Therefore there is a 1-to-many relationship between them.
 
-Each Subscription belongs to a single Listener.
-Each Listener can Subscribe to many Artists.
-Therefore there is a many-to-many relationship between them.
+
+
+
+Listener table:
+id - integer    <--- Primary key
+user_name - text
+first_name - text
+last_name - text
+favourite_genre - text
+
+Subscription table:
+listener_id - integer   <--- Foreign key
+artist_id - integer   <--- Foreign key
+
+Track table:
+id - integer    <--- Primary key
+name - text
+length - integer
+artist_id - integer   <--- Foreign key
+
+Artist table:
+id - integer    <--- Primary key
+name - text
+description - long text
+genre - text
+country - text
 
 
 
@@ -63,7 +163,6 @@ Therefore there is a many-to-many relationship between them.
 
 User:       Relationships:       Entitites:
 User        Followers
-            Following
 
 
 Each Followers list belongs to a single User.
@@ -75,12 +174,28 @@ Each User can Follow many Users.
 Therefore there is a 1-to-many relationship between them.
 
 
+User table:
+id - integer    <--- Primary key
+user_name - text
+first_name - text
+last_name - text
+age - integer
+location - text
+profession - text
+avatar - image?
+
+Followers table:
+id - integer    <--- Primary key
+follower_id - integer   <--- Foreign key
+followee_id - integer   <--- Foreign key
+*Can reverse the request to find who follows who?
+
 
 
 5. Design a database structure to allow users to request (and accept) to follow each other on social media (eg. Facebook).
 
 User:       Relationships:       Entitites:
-User        Friend Requests
+User        Friend Request
             Friends
 
 
@@ -91,3 +206,24 @@ Therefore there is a 1-to-many relationship between them.
 Each Friends list belongs to a single User.
 Each User can have multiple Friends.
 Therefore there is a 1-to-many relationship between them.
+
+
+User table:
+id - integer    <--- Primary key
+user_name - text
+first_name - text
+last_name - text
+age - integer
+location - text
+profession - text
+avatar - image?
+
+Friend_Request table:
+id - integer    <--- Primary key
+user_id - integer   <--- Foreign key
+requester_id - integer   <--- Foreign key
+
+Friends table:
+id - integer    <--- Primary key
+user_id - integer   <--- Foreign key
+friend_id - integer   <--- Foreign key
