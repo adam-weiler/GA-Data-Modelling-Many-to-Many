@@ -1,0 +1,50 @@
+Part 3:
+
+In this part you will be given just the concept of an app and you will have to design the classes, relationships, and database structure for it. You can keep things relatively simple and aim for somewhere around 2-5 classes per app.
+
+1. A food delivery app that allows users to place orders for dishes from restaurants.
+
+User:       Relationships:       Entitites:
+Customer    Dish                 Restaurant
+
+
+Each Dish belongs to one Customer.
+Each Customer can order many Dishs.
+Therefore there is a 1-to-many relationship between them.
+
+Each Dish can be prepared at a single Restaurant.
+Each Restaurant has many Dishes.
+
+Therefore there is a 1-to-many relationship between them.
+
+
+
+
+2. An app that airlines might use to keep track of the flights they have scheduled and who the passengers and crew are on each flight.
+
+User:       Relationships:       Entitites:
+Passenger   Flight               Crew
+                                 Airline
+
+
+
+3. A music streaming app that allows artists to post tracks, and for listeners to subscribe to artists.
+
+User:       Relationships:       Entitites:
+Listener    Subscribe            Artist
+            Post Track
+
+
+4. Design the database structure to allow users to follow other users on social media (eg. Twitter).
+
+User:       Relationships:       Entitites:
+User        Follow               Following
+
+
+
+
+5. Design a database structure to allow users to request (and accept) to follow each other on social media (eg. Facebook).
+
+User:       Relationships:       Entitites:
+User        Follow               Facebook?
+            Accept
